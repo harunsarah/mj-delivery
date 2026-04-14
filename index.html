@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta name="description" content="MJ Delivery - Layanan pengiriman cepat, aman, dan terpercaya di seluruh Indonesia. Real-time tracking, driver profesional, dan harga bersaing.">
+    <title>MJ Delivery | Cepat & Aman - Layanan Kirim Paket</title>
+    <!-- Google Fonts & Font Awesome 6 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #0f172a;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        :root {
+            --primary: #f05a28;
+            --primary-dark: #d9481c;
+            --primary-soft: #fee9e2;
+            --secondary: #0b2b3b;
+            --gray-50: #f9fafb;
+            --gray-100: #f1f5f9;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+            --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+            --shadow-lg: 0 20px 25px -12px rgba(0, 0, 0, 0.08);
+            --radius-xl: 1.5rem;
+            --radius-2xl: 2rem;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(8px);
+            box-shadow: var(--shadow-sm);
+            z-index: 100;
+            padding: 1rem 0;
+            transition: all 0.2s;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, var(--primary) 0%, #f97316 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .logo span {
+            background: none;
+            color: var(--secondary);
+            background-clip: unset;
+            -webkit-background-clip: unset;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: var(--gray-700);
+            transition: color 0.2s;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--gray-800);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 5rem 0 4rem;
+            background: linear-gradient(120deg, #fffaf5 0%, #ffffff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-title {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .hero-title span {
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            color: var(--gray-600);
+            margin-bottom: 2rem;
+            line-height: 1.5;
+            max-width: 90%;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.85rem 2rem;
+            border-radius: 60px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            font-size: 1rem;
+            box-shadow: 0 4px 8px rgba(240, 90, 40, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(240, 90, 40, 0.25);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid var(--primary);
+            color: var(--primary);
+            padding: 0.85rem 2rem;
+            border-radius: 60px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .hero-illustration {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-icon {
+            font-size: 11rem;
+            color: var(--primary);
+            filter: drop-shadow(0 12px 18px rgba(240, 90, 40, 0.2));
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Section */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-bg-light {
+            background-color: var(--gray-50);
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .section-sub {
+            text-align: center;
+            color: var(--gray-600);
+            max-width: 650px;
+            margin: 0 auto 3rem auto;
+            font-size: 1.05rem;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: all 0.25s;
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-soft);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+
+        /* Feature Cards (horizontal style) */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 1.25rem;
+            padding: 1.8rem;
+            display: flex;
+            gap: 1.2rem;
+            align-items: flex-start;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s;
+            border: 1px solid #f0f2f5;
+        }
+
+        .feature-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-3px);
+        }
+
+        .feature-icon {
+            font-size: 2.2rem;
+            color: var(--primary);
+            min-width: 55px;
+        }
+
+        .feature-text h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .feature-text p {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        /* Tracking Panel */
+        .tracking-wrapper {
+            margin: 0 1rem 2rem 1rem;
+        }
+        .tracking-panel {
+            background: linear-gradient(145deg, #ffffff, #fefaf7);
+            border-radius: 2rem;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(240, 90, 40, 0.15);
+        }
+
+        .tracking-panel h3 {
+            font-size: 1.8rem;
+            margin: 0.75rem 0 0.5rem;
+        }
+
+        .tracking-form {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.8rem;
+        }
+
+        .tracking-input {
+            flex: 1;
+            min-width: 260px;
+            padding: 0.9rem 1.5rem;
+            border-radius: 60px;
+            border: 1px solid #e2e8f0;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.2s;
+            background: white;
+        }
+
+        .tracking-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(240, 90, 40, 0.1);
+        }
+
+        /* CTA Section */
+        .cta-block {
+            background: linear-gradient(115deg, #0b2b3b 0%, #1a3b4b 100%);
+            border-radius: 2rem;
+            margin: 2rem 1rem;
+            padding: 3.5rem 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-block h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-block p {
+            color: #d4e2ed;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        .btn-wa {
+            background: #25D366;
+            color: white;
+            border: none;
+        }
+
+        .btn-wa:hover {
+            background: #20b859;
+            transform: translateY(-2px);
+        }
+
+        .btn-light-outline {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+        }
+
+        .btn-light-outline:hover {
+            background: white;
+            color: #0b2b3b;
+            border-color: white;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0a1c26;
+            color: #b9d0db;
+            padding: 3rem 0 2rem;
+            margin-top: 1rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-col h4 {
+            color: white;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col p,
+        .footer-col a {
+            color: #a0bfcf;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.6rem;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: var(--primary);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            font-size: 1.4rem;
+            color: #b9d0db;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1.8rem;
+            border-top: 1px solid #1f4457;
+            font-size: 0.8rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 880px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .hero-icon {
+                font-size: 8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 75%;
+                height: calc(100vh - 70px);
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding: 2rem 1rem;
+                gap: 2rem;
+                transition: left 0.3s ease;
+                box-shadow: 4px 0 18px rgba(0,0,0,0.08);
+                z-index: 99;
+                border-radius: 0 1.5rem 1.5rem 0;
+            }
+            .nav-links.active {
+                left: 0;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-desc {
+                max-width: 100%;
+            }
+            .btn-group {
+                justify-content: center;
+            }
+            .hero-illustration {
+                order: -1;
+                margin-bottom: 1rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .feature-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .feature-icon {
+                margin-bottom: 0.5rem;
+            }
+            .tracking-panel h3 {
+                font-size: 1.5rem;
+            }
+            .cta-block h2 {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1.2rem;
+            }
+            .hero {
+                padding: 2.5rem 0;
+            }
+            .btn-primary, .btn-outline {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="container nav-container">
+        <div class="logo">MJ<span>Delivery</span></div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#layanan">Layanan</a></li>
+            <li><a href="#keunggulan">Keunggulan</a></li>
+            <li><a href="#hubungi">Kontak</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-grid">
+            <div>
+                <h1 class="hero-title">Kirim Paket <span>Cepat & Aman</span> <br>Bersama MJ DELIVERY</h1>
+                <p class="hero-desc">Layanan pengiriman terpercaya ke seluruh Indonesia. Real-time tracking, driver profesional, asuransi perlindungan, dan harga transparan. Kirim barang jadi lebih mudah!</p>
+                <div class="btn-group">
+                    <a href="#" class="btn-primary" id="orderNowBtn"><i class="fas fa-paper-plane"></i> Pesan Sekarang</a>
+                    <a href="#trackingSection" class="btn-outline"><i class="fas fa-map-marked-alt"></i> Lacak Kiriman</a>
+                </div>
+            </div>
+            <div class="hero-illustration">
+                <i class="fas fa-motorcycle hero-icon"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Layanan Section -->
+    <section id="layanan" class="section">
+        <div class="container">
+            <h2 class="section-title">Layanan Unggulan</h2>
+            <p class="section-sub">Solusi pengiriman sesuai kebutuhan Anda, mulai dari reguler hingga same day</p>
+            <div class="cards-grid">
+                <div class="service-card">
+                    <i class="fas fa-shipping-fast service-icon"></i>
+                    <h3>Reguler</h3>
+                    <p>Estimasi 2-3 hari. Tarif ekonomis, cocok untuk pengiriman harian & e-commerce.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-bolt service-icon"></i>
+                    <h3>Express</h3>
+                    <p>Sampai dalam 1 hari kerja. Prioritas tinggi untuk dokumen & barang penting.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-hourglass-half service-icon"></i>
+                    <h3>Same Day</h3>
+                    <p>Pengiriman hari yang sama untuk area Jabodetabek dan kota besar lainnya.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-archive service-icon"></i>
+                    <h3>Logistik & Cargo</h3>
+                    <p>Kiriman besar, palet, dan kebutuhan bisnis dengan handling profesional.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Keunggulan Section -->
+    <section id="keunggulan" class="section section-bg-light">
+        <div class="container">
+            <h2 class="section-title">Mengapa MJ DELIVERY?</h2>
+            <p class="section-sub">Kami mengutamakan kepercayaan dan kenyamanan pelanggan</p>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <i class="fas fa-id-card feature-icon"></i>
+                    <div class="feature-text">
+                        <h4>Driver Profesional & Tersertifikasi</h4>
+                        <p>Kurir handal, ramah, dan terlatih untuk menjaga keamanan paket Anda.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-satellite-dish feature-icon"></i>
+                    <div class="feature-text">
+                        <h4>Lacak Real-Time</h4>
+                        <p>Pantau posisi paket secara langsung melalui website dan notifikasi.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-shield-virus feature-icon"></i>
+                    <div class="feature-text">
+                        <h4>Asuransi Pengiriman</h4>
+                        <p>Perlindungan menyeluruh untuk setiap paket, ganti rugi hingga nilai penuh.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-headset feature-icon"></i>
+                    <div class="feature-text">
+                        <h4>Layanan Pelanggan 24/7</h4>
+                        <p>Tim CS siap membantu via telepon, WhatsApp, atau email kapan pun.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lacak Pengiriman (Demo Interaktif) -->
+    <div class="tracking-wrapper" id="trackingSection">
+        <div class="container">
+            <div class="tracking-panel">
+                <i class="fas fa-search-location" style="font-size: 2.8rem; color: var(--primary);"></i>
+                <h3>Lacak Kiriman Anda</h3>
+                <p style="margin-bottom: 0.5rem;">Masukkan nomor resi untuk mengetahui status terbaru</p>
+                <div class="tracking-form">
+                    <input type="text" class="tracking-input" id="resiNumber" placeholder="Contoh: MJD-9876543210" autocomplete="off">
+                    <button class="btn-primary" id="trackingButton"><i class="fas fa-arrow-right"></i> Lacak</button>
+                </div>
+                <p style="margin-top: 1rem; font-size: 0.8rem; color: #5b6e8c;">*Demo simulasi – integrasi penuh segera hadir.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hubungi Kami / Call to Action -->
+    <section id="hubungi">
+        <div class="container">
+            <div class="cta-block">
+                <h2>Siap Kirim Bersama MJ DELIVERY?</h2>
+                <p>Dapatkan tarif khusus untuk pengiriman pertama Anda. Hubungi tim kami sekarang.</p>
+                <div class="btn-group" style="justify-content: center; margin-top: 2rem;">
+                    <a href="#" class="btn-primary btn-wa" id="whatsappCta"><i class="fab fa-whatsapp"></i> Chat WhatsApp</a>
+                    <a href="#" class="btn-outline btn-light-outline" id="callCta"><i class="fas fa-phone-alt"></i> Hubungi CS</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>MJ DELIVERY</h4>
+                <p>Layanan kurir modern yang mengutamakan kecepatan, keamanan, dan kepuasan pelanggan di seluruh Indonesia.</p>
+                <div class="social-icons">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Kontak Resmi</h4>
+                <p><i class="fas fa-map-pin"></i> Jakarta Pusat, DKI Jakarta</p>
+                <p><i class="fas fa-phone-alt"></i> +62 21 1234 5678</p>
+                <p><i class="fab fa-whatsapp"></i> +62 812 3456 7890</p>
+                <p><i class="fas fa-envelope"></i> hello@mjdelivery.co.id</p>
+            </div>
+            <div class="footer-col">
+                <h4>Jam Layanan</h4>
+                <p>Senin - Jumat : 08.00 - 20.00</p>
+                <p>Sabtu : 09.00 - 17.00</p>
+                <p>Minggu & Libur : 10.00 - 15.00</p>
+                <p>Call Center 24/7 (Emergency)</p>
+            </div>
+            <div class="footer-col">
+                <h4>Mitra & Bisnis</h4>
+                <p><a href="#">Daftar Kurir Mitra</a></p>
+                <p><a href="#">Kerja Sama Korporasi</a></p>
+                <p><a href="#">Syarat & Ketentuan</a></p>
+                <p><a href="#">Kebijakan Privasi</a></p>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 MJ DELIVERY - Layanan Pengiriman Terpercaya. Seluruh hak cipta dilindungi.
+        </div>
+    </div>
+</footer>
+
+<script>
+    (function() {
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+        // Tutup menu saat klik link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Smooth scroll untuk anchor links internal
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === "#" || targetId === "") return;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Demo tracking alert (interaktif)
+        const trackBtn = document.getElementById('trackingButton');
+        const resiInput = document.getElementById('resiNumber');
+        if (trackBtn) {
+            trackBtn.addEventListener('click', () => {
+                let resiValue = resiInput.value.trim();
+                if (resiValue === "") {
+                    alert("🔍 Masukkan nomor resi terlebih dahulu. Contoh: MJD-9876543210");
+                } else {
+                    alert(`📦 Status pengiriman untuk resi ${resiValue}:\n✅ Paket sedang dalam perjalanan menuju kota tujuan.\n🚚 Estimasi tiba dalam 1x24 jam.\n💬 Untuk bantuan lebih lanjut, hubungi CS kami. (Demo layanan MJ DELIVERY)`);
+                }
+            });
+        }
+
+        // Tombol pesan sekarang & WhatsApp demo
+        const orderBtn = document.getElementById('orderNowBtn');
+        if (orderBtn) {
+            orderBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                alert("🚀 Terima kasih! Tim MJ DELIVERY akan menghubungi Anda melalui WhatsApp dalam 5 menit. Atau hubungi +62 812 3456 7890");
+            });
+        }
+
+        const waCta = document.getElementById('whatsappCta');
+        if (waCta) {
+            waCta.addEventListener('click', (e) => {
+                e.preventDefault();
+                alert("💬 Hubungi kami via WhatsApp: +62 812 3456 7890 (klik link di footer untuk simulasi).\nLayanan siap membantu 24 jam.");
+            });
+        }
+
+        const callCta = document.getElementById('callCta');
+        if (callCta) {
+            callCta.addEventListener('click', (e) => {
+                e.preventDefault();
+                alert("📞 CS MJ DELIVERY: +62 21 1234 5678. Senin-Minggu siap membantu.");
+            });
+        }
+
+        // Active nav highlight berdasarkan scroll (sederhana)
+        const sections = document.querySelectorAll('section[id]');
+        const navItems = document.querySelectorAll('.nav-links a');
+
+        function highlightNav() {
+            let scrollPos = window.scrollY + 120;
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navItems.forEach(link => {
+                link.classList.remove('active');
+                const href = link.getAttribute('href').substring(1);
+                if (href === current) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', highlightNav);
+        window.addEventListener('load', highlightNav);
+    })();
+</script>
+</body>
+</html>
